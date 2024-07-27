@@ -163,10 +163,19 @@ public class GameController : MonoBehaviour
 
     void UpdateEnterpriseButtons()
     {
+        string nameTemplate = "{0}";
+        string costTemplate = "Cost: {0}";
+        string incomeTemplate = "Income: {0}/sec";
+        string levelTemplate = "Level: {0}";
+
         for (int i = 0; i < enterpriseButtons.Count; i++)
         {
             var button = enterpriseButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            button.text = $"{enterprises[i].name}\nCost: {enterprises[i].cost}\nIncome: {enterprises[i].income}/sec\nLevel: {enterprises[i].level}";
+            button.text = string.Format("{0}\n{1}\n{2}\n{3}",
+                                        string.Format(nameTemplate, enterprises[i].name),
+                                        string.Format(costTemplate, enterprises[i].cost),
+                                        string.Format(incomeTemplate, enterprises[i].income),
+                                        string.Format(levelTemplate, enterprises[i].level));
         }
     }
 
